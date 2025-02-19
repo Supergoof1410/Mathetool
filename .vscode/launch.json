@@ -8,7 +8,7 @@
             "name": "C++ Launch (GDB)",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}\\Hello World\\main.exe",
+            "program": "${workspaceFolder}main.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
