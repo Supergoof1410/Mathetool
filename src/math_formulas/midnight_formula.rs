@@ -17,6 +17,10 @@
 
 pub fn midnight_formula(variables_array: &[f64; 3]) {
 
+    println!("\nQuadratische Gleichung mittels Mitternachtsformel lösen!");
+
+    println!("\nWerte: A = {}, B = {}, C = {}", variables_array[0], variables_array[1], variables_array[2]);
+
     // Die Result Variable wird noch an anderer Stelle gebraucht, deswegen wird sie nur für die
     // Funktion mutable gemacht.
     let mut result: f64;
