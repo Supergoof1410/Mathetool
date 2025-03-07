@@ -8,7 +8,7 @@
 /// # Ablauf
 /// - Die Diskriminante wird berechnet, um zu prüfen, ob es 0, 1 oder 2 Lösungen gibt.
 /// - Je nach Fall wird eine oder beide Lösungen berechnet und ausgegeben.
-/// - Komplexe Zahlen (imaginäre Lösungen) werden aktuell nicht unterstützt.
+/// - Komplexe Zahlen (imaginäre Lösungen) werden aktuell unterstützt.
 ///
 /// # Hinweis
 /// Die Funktion nutzt eine mutable lokale Variable `result`, um die Berechnung
@@ -32,7 +32,17 @@ pub fn midnight_formula(variables_array: &[f64; 3]) {
 
     // Berechnung mit komplexen Zahlen "i"
     if discriminante < 0.0 {
-        println!("Es gibt keine Lösung!");
+        let discriminante_negotation: f64 = discriminante * (-1.0);
+
+        println!("Es gibt keine Lösung! Für reelle Zahlen\n");
+        println!("Für komplexe Zahlen\n");
+        println!("Diskriminante umkehren: {}\n", discriminante_negotation);
+
+        println!("\nDie erste lösung mit (+):\n");
+
+        result = (-(variables_array[1]))/(2.0 * variables_array[0]);
+        let result_imag: f64 = discriminante_negotation.sqrt() / (2.0 * variables_array[0]);
+        println!("Lösungen: {} (+/-): {}i", result, result_imag);
     }
 
     // Berechnung nur wenn die Diskriminante = 0 ist
@@ -50,7 +60,7 @@ pub fn midnight_formula(variables_array: &[f64; 3]) {
         result = (-(variables_array[1])+discriminante.sqrt())/(2.0 * variables_array[0]);
         println!("Lösung mit (+): {}", result);
 
-        println!("\nDie erste lösung mit (-):\n");
+        println!("\nDie zweite lösung mit (-):\n");
 
         result = (-(variables_array[1])-discriminante.sqrt())/(2.0 * variables_array[0]);
         println!("Lösung mit (+): {}", result);
