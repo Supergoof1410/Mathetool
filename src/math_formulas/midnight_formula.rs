@@ -35,14 +35,14 @@ pub fn midnight_formula(variables_array: &[f64; 3]) {
         println!("Es gibt keine Lösung!");
     }
 
-    // Berechnung nur wenn die Diskriminante gleich null ist
+    // Berechnung nur wenn die Diskriminante = 0 ist
     else if discriminante == 0.0 {
         println!("Es gibt genau eine Lösung!");
         result = (-(variables_array[1])-discriminante.sqrt())/(2.0 * variables_array[0]);
         println!("Lösung: {}", result); 
     }
 
-    // Berechnung mit zwei Lösungen
+    // Berechnung mit zwei Lösungen, wenn die Diskriminante > 0 ist
     else {
         println!("Es gibt 2 Lösungen!");
         println!("\nDie erste lösung mit (+):\n");
