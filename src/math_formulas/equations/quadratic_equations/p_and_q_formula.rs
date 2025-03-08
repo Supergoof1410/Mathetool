@@ -1,6 +1,5 @@
 use super::display_results;
 
-
 /*
  * Quadratische Gleichung lösen mit der pq-Formel
  *
@@ -42,7 +41,7 @@ pub fn p_and_q_formula(variables_array: &[f64; 3]) {
     let mut coeffizient_p: f64 = variables_array[1];
     let mut coeffizient_q: f64 = variables_array[2];
 
-    let discriminante: f64 = ((coeffizient_p/2.0)*(coeffizient_p/2.0))-coeffizient_q;
+    let radikand: f64 = ((coeffizient_p/2.0)*(coeffizient_p/2.0))-coeffizient_q;
     
     let mut result: f64;
 
@@ -64,35 +63,29 @@ pub fn p_and_q_formula(variables_array: &[f64; 3]) {
     if temp_variable_a == 1.0 {
         // Da wir wenn nötig erst umformen müssen, können wir erst jetzt
         // die Diskriminante berechnen.
-        //discriminante = (((coeffizient_p/2.0)*(coeffizient_p/2.0))-coeffizient_q);
 
-        println!("\nDiskriminante = {}\n", discriminante*4.0);
+        println!("\nRadikand = {}\n", radikand*4.0);
 
         // Berechnung mit komplexen Zahlen "i"
-        if discriminante < 0.0 {
-            let discriminante_negotation: f64 = discriminante * (-1.0);
-
-            println!("Es gibt keine Lösung! Für reelle Zahlen\n");
-            println!("Für komplexe Zahlen\n");
-            println!("Diskriminante umkehren: {}\n", discriminante_negotation*4.0);
-
+        if radikand < 0.0 {
+            //let radikand_negotation: f64 = radikand * (-1.0);
             result = -(coeffizient_p / 2.0);
             let result_imag: f64 = (coeffizient_q - ((coeffizient_p/2.0)*(coeffizient_p/2.0))).sqrt();
-            println!("Lösungen: {} (+/-): {:.5}i", result, result_imag);
+            display_results::display_result(&result, &radikand, Some(1), Some(result_imag));
         }
-        else if discriminante == 0.0 {
+        else if radikand == 0.0 {
             println!("Es gibt genau eine Lösung!");
             result = -(coeffizient_p / 2.0);
-            println!("Lösung: {}", result);
+            display_results::display_result(&result, &radikand, None, None);
         }
         else {
             println!("Es gibt 2 Lösungen!");
 
-            result = -(coeffizient_p / 2.0) + discriminante.sqrt();
-            display_results::display_result(&result, 1, 1);
+            result = -(coeffizient_p / 2.0) + radikand.sqrt();
+            display_results::display_result(&result, &radikand, Some(1), None);
 
-            result = -(coeffizient_p / 2.0) - discriminante.sqrt();
-            display_results::display_result(&result, 1, 0);
+            result = -(coeffizient_p / 2.0) - radikand.sqrt();
+            display_results::display_result(&result, &radikand, Some(0), None);
         }
     }
 }

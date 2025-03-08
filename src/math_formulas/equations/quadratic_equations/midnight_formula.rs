@@ -27,37 +27,36 @@ pub fn midnight_formula(variables_array: &[f64; 3]) {
 
     // Berechnen der Diskriminante
     println!("\nJetzt wird die Diskriminante als erstes berechnet\n");
-    let discriminante: f64 = (variables_array[1] * variables_array[1]) - 4.0 * variables_array[0]*variables_array[2];
-    println!("Diskriminante: {}\n", discriminante);
+    
+    let radikand: f64 = (variables_array[1] * variables_array[1]) - 4.0 * variables_array[0]*variables_array[2];
 
+    println!("\nRadikand = {}\n", radikand);
+    
     // Berechnung mit komplexen Zahlen "i"
-    if discriminante < 0.0 {
-        let discriminante_negotation: f64 = discriminante * (-1.0);
-
-        println!("Es gibt keine Lösung! Für reelle Zahlen\n");
-        println!("Für komplexe Zahlen\n");
-        println!("Diskriminante umkehren: {}\n", discriminante_negotation);
+    if radikand < 0.0 {
+        let radikand_negotation: f64 = radikand * (-1.0);
 
         result = (-(variables_array[1]))/(2.0 * variables_array[0]);
-        let result_imag: f64 = discriminante_negotation.sqrt() / (2.0 * variables_array[0]);
-        println!("Lösungen: {} (+/-): {:.5}i", result, result_imag);
+        let result_imag: f64 = radikand_negotation.sqrt() / (2.0 * variables_array[0]);
+        display_results::display_result(&result, &radikand, None, Some(result_imag));
     }
 
     // Berechnung nur wenn die Diskriminante = 0 ist
-    else if discriminante == 0.0 {
+    else if radikand == 0.0 {
         println!("Es gibt genau eine Lösung!");
-        result = (-(variables_array[1])-discriminante.sqrt())/(2.0 * variables_array[0]);
-        println!("Lösung: {}", result); 
+
+        result = (-(variables_array[1])-radikand.sqrt())/(2.0 * variables_array[0]);
+        display_results::display_result(&result, &radikand, None, None);
     }
 
     // Berechnung mit zwei Lösungen, wenn die Diskriminante > 0 ist
     else {
         println!("Es gibt 2 Lösungen!");
 
-        result = (-(variables_array[1])+discriminante.sqrt())/(2.0 * variables_array[0]);
-        display_results::display_result(&result, 1, 1);
+        result = (-(variables_array[1])+radikand.sqrt())/(2.0 * variables_array[0]);
+        display_results::display_result(&result, &radikand, Some(1), None);
         
-        result = (-(variables_array[1])-discriminante.sqrt())/(2.0 * variables_array[0]);
-        display_results::display_result(&result, 1, 0);
+        result = (-(variables_array[1])-radikand.sqrt())/(2.0 * variables_array[0]);
+        display_results::display_result(&result, &radikand, Some(0), None);
     }
 }
