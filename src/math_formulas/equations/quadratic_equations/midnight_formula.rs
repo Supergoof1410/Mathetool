@@ -19,7 +19,7 @@ pub fn midnight_formula(variables_array: &[f64; 3]) {
 
     println!("\nQuadratische Gleichung mittels Mitternachtsformel lösen!");
 
-    println!("\nWerte: A = {}, B = {}, C = {}", variables_array[0], variables_array[1], variables_array[2]);
+    
 
     // Die Result Variable wird noch an anderer Stelle gebraucht, deswegen wird sie nur für die
     // Funktion mutable gemacht.
@@ -38,11 +38,9 @@ pub fn midnight_formula(variables_array: &[f64; 3]) {
         println!("Für komplexe Zahlen\n");
         println!("Diskriminante umkehren: {}\n", discriminante_negotation);
 
-        println!("\nDie erste lösung mit (+):\n");
-
         result = (-(variables_array[1]))/(2.0 * variables_array[0]);
         let result_imag: f64 = discriminante_negotation.sqrt() / (2.0 * variables_array[0]);
-        println!("Lösungen: {} (+/-): {}i", result, result_imag);
+        println!("Lösungen: {} (+/-): {:.5}i", result, result_imag);
     }
 
     // Berechnung nur wenn die Diskriminante = 0 ist

@@ -1,1 +1,1 @@
-pub mod midnight_formula;
+pub mod equations;
