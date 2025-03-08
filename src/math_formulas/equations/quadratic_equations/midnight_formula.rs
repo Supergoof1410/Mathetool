@@ -1,3 +1,5 @@
+use super::display_results;
+
 /// Berechnet die Lösungen einer quadratischen Gleichung mit der Mitternachtsformel.
 ///
 /// # Parameter
@@ -18,8 +20,6 @@
 pub fn midnight_formula(variables_array: &[f64; 3]) {
 
     println!("\nQuadratische Gleichung mittels Mitternachtsformel lösen!");
-
-    
 
     // Die Result Variable wird noch an anderer Stelle gebraucht, deswegen wird sie nur für die
     // Funktion mutable gemacht.
@@ -53,14 +53,11 @@ pub fn midnight_formula(variables_array: &[f64; 3]) {
     // Berechnung mit zwei Lösungen, wenn die Diskriminante > 0 ist
     else {
         println!("Es gibt 2 Lösungen!");
-        println!("\nDie erste lösung mit (+):\n");
 
         result = (-(variables_array[1])+discriminante.sqrt())/(2.0 * variables_array[0]);
-        println!("Lösung mit (+): {}", result);
-
-        println!("\nDie zweite lösung mit (-):\n");
-
+        display_results::display_result(&result, 1, 1);
+        
         result = (-(variables_array[1])-discriminante.sqrt())/(2.0 * variables_array[0]);
-        println!("Lösung mit (+): {}", result);
+        display_results::display_result(&result, 1, 0);
     }
 }

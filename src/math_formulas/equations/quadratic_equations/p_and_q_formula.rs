@@ -1,3 +1,6 @@
+use super::display_results;
+
+
 /*
  * Quadratische Gleichung lösen mit der pq-Formel
  *
@@ -84,14 +87,12 @@ pub fn p_and_q_formula(variables_array: &[f64; 3]) {
         }
         else {
             println!("Es gibt 2 Lösungen!");
-            println!("\nDie erste lösung mit (+):\n");
 
             result = -(coeffizient_p / 2.0) + discriminante.sqrt();
-            println!("Lösung mit (+): {}", result);
+            display_results::display_result(&result, 1, 1);
 
-            println!("\nDie zweite lösung mit (-):\n");
             result = -(coeffizient_p / 2.0) - discriminante.sqrt();
-            println!("Lösung mit (-): {}", result);
+            display_results::display_result(&result, 1, 0);
         }
     }
 }
