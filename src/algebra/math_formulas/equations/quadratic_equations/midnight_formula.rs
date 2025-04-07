@@ -17,7 +17,7 @@ use super::display_results;
 /// nacheinander durchzuführen, ohne für jede Lösung eine eigene Variable zu erzeugen.
 /// Dies hält den Speicherbedarf minimal und den Code klar.
 
-pub fn midnight_formula(variables_array_coeffizenten: &[f64; 3]) {
+pub fn midnight_formula(variables_array_coeffizenten: [f64; 3]) {
 
     println!("\nQuadratische Gleichung mittels Mitternachtsformel lösen!");
 
