@@ -1,1 +1,0 @@
-pub mod quadratic_equations;

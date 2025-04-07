@@ -1,19 +1,25 @@
 #![allow(dead_code)]
 
-mod math_formulas;
+mod paths;
+
+mod helping_tools;
+mod algebra;
+mod arithmetic;
+
 fn main() {
-    // Zum testen ist das Array statisch
-    let variables: [f64; 3] = [2.0,3.0,5.0];
-     
-    println!("\nWerte: A = {}, B = {}, C = {}", variables[0], variables[1], variables[2]);
+    let calculate_string: String = "3+6  + 8 - 3+5+7-9".to_string();
 
-    // Test potenzieren
+    let removed_spaces: String = paths::str_manipulation::remove_whitespaces(calculate_string);
 
-    //println!("Potenz aus: {} = {}", variables[1], variables[1].powf(3.0));
+    println!("Leerzeichen entfernt: {}\n", removed_spaces);
 
-    // Das Array wird mit call-by-reference übergeben.
-    math_formulas::equations::quadratic_equations::midnight_formula::midnight_formula(&variables);
-    println!("--------------------------------------------");
-    math_formulas::equations::quadratic_equations::p_and_q_formula::p_and_q_formula(&variables);
+    let replaced_operators: String = paths::str_manipulation::terms_replace_operators(removed_spaces);
 
+    println!("Leerzeichen vor den Operatoren: {}\n", replaced_operators);
+
+    let splitted_terms: Vec<String> = paths::str_manipulation::split_terms(replaced_operators);
+
+    println!("Terme einzeln aufgeteilt {:?}", splitted_terms);
+
+    println!("Ergebnis: {:?}", paths::calc_nums::calculate_numbers(splitted_terms));
 }

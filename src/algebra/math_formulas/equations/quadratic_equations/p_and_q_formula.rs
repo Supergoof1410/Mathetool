@@ -36,7 +36,7 @@ use super::display_results;
  * - Ergebnis: Komplexe Lösungen
  */
 
-pub fn p_and_q_formula(variables_array_coeffizenten: &[f64; 3]) {
+pub fn p_and_q_formula(variables_array_coeffizenten: [f64; 3]) {
     println!("Quadratische Gleichung mittels pq-Formel lösen!");
 
     let mut coeffizient_p: f64 = variables_array_coeffizenten[1];
