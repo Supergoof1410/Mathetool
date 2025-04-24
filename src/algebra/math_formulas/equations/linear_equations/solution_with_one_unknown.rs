@@ -1,5 +1,3 @@
-use crate::paths;
-
 pub fn one_unknown(equation: String) {
     
     println!("\nOriginal Gleichung: {}", &equation);
