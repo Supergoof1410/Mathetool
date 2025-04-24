@@ -7,19 +7,20 @@ mod algebra;
 mod arithmetic;
 
 fn main() {
-    let calculate_string: String = "3+6  + 8 - 3+5+7-9".to_string();
+    let equation_string: String = "-3 + 6 * 2 - 4 / 2".to_string();
 
-    let removed_spaces: String = paths::str_manipulation::remove_whitespaces(calculate_string);
+    let splitted_terms: Vec<String> = paths::str_manipulation::strings_refactor(equation_string);
 
-    println!("Leerzeichen entfernt: {}\n", removed_spaces);
+    let result_mult_div: Vec<String> = paths::calc_nums::calculate_numbers_mult_diff(splitted_terms);
 
-    let replaced_operators: String = paths::str_manipulation::terms_replace_operators(removed_spaces);
+    println!("Ergebnis: {:?}", result_mult_div);
 
-    println!("Leerzeichen vor den Operatoren: {}\n", replaced_operators);
+    let result_mult_div_all: String = paths::calc_nums::calculate_numbers_addition(result_mult_div);
 
-    let splitted_terms: Vec<String> = paths::str_manipulation::split_terms(replaced_operators);
+    let end_result: f64 = match result_mult_div_all.parse::<f64>() {
+        Ok(result) => result,
+        Err(_) => 0.0
+    };
 
-    println!("Terme einzeln aufgeteilt {:?}", splitted_terms);
-
-    println!("Ergebnis: {:?}", paths::calc_nums::calculate_numbers(splitted_terms));
+    println!("Endergebnis: {:.2}", end_result);
 }
