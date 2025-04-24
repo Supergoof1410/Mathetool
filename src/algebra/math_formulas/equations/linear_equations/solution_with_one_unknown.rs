@@ -7,13 +7,13 @@ pub fn one_unknown(equation: String) {
     println!("\n1. Leerzeichen entfernen: \n");
 
     // Alle Leerzeichen entfernen
-    let without_whitespaces: String = paths::str_manipulation::remove_whitespaces(equation);
+    // let without_whitespaces: String = paths::str_manipulation::remove_whitespaces(equation);
 
-    println!("Ergebnis: {}", without_whitespaces);
+    // println!("Ergebnis: {}", without_whitespaces);
 
 
     // Der Split von der Gleichung zu einer rechten und linken Seite.
-    let equation_split_equal: Vec<String> = without_whitespaces.split('=').map(str::to_string).collect(); 
+    //let equation_split_equal: Vec<String> = without_whitespaces.split('=').map(str::to_string).collect(); 
 
     println!("\n2. Aufteilung der Gleichung: \n");
 
@@ -48,18 +48,4 @@ fn split_x_and_number_terms(split_terms: Vec<&str>) -> (Vec<&str>, Vec<i32>) {
     }
 
     tupel_terms
-}
-
-fn calculate_x_terms() {
-
-}
-
-fn calculate_numbers(numbers: Vec<i32>) -> i32 {
-    let mut result: i32 = 0;
-    
-    for number_item in numbers.into_iter() {
-        result += number_item;
-    }
-
-    result
 }
