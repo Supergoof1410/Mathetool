@@ -1,6 +1,7 @@
 #![allow(dead_code)]
 
 use helping_tools::display_terminal::display_terminals;
+use paths::calc_nums::calculate_formula;
 
 mod paths;
 
@@ -9,15 +10,20 @@ mod algebra;
 mod arithmetic;
 
 fn main() {
-    let equation_string: String = "3 +2+1*60-5/658".to_string();
+    let equation_string: String = "3^2*/5   4+5-5-8*2^2*10-1000".to_string();
     println!();
     display_terminals("Original Formel".to_string(), &equation_string);
 
     let splitted_terms: Vec<String> = paths::str_manipulation::strings_refactor(equation_string);
 
-    let result_mult_div: Vec<String> = paths::calc_nums::calculate_numbers_mult_diff(splitted_terms);
+    //calculate_formula(splitted_terms);
 
-    //println!("Ergebnis: {:?}", result_mult_div);
+
+
+    let result_powers: Vec<String> = paths::calc_nums::calculate_numbers_powers(splitted_terms);
+
+    let result_mult_div: Vec<String> = paths::calc_nums::calculate_numbers_mult_diff(result_powers);
+
     println!();
     display_terminals("Addition mit Subtraktion".to_string(), &result_mult_div.join(" "));
 
@@ -28,7 +34,6 @@ fn main() {
         Err(_) => 0.0
     };
 
-    //println!("Endergebnis: {:.2}", end_result);
     display_terminals("Endergebnis".to_string(), &end_result.to_string());
     println!();
 }

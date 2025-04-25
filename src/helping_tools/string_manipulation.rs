@@ -1,6 +1,5 @@
 use super::display_terminal::display_terminals;
 
-
 // Diese Funktion ist für andere sichtbar und macht die
 // Stringmanipulationen verfügbar.
 pub fn strings_refactor(crazy_string: String) -> Vec<String> {
@@ -30,6 +29,7 @@ fn terms_replace_operators(splitted_equation: String) -> String {
                 '-' => terms_replaced.push_str(" -"),
                 '*' => terms_replaced.push_str(" *"),
                 '/' => terms_replaced.push_str(" /"),
+                '^' => terms_replaced.push_str(" ^"),
                 _ => terms_replaced.push(terms),
         }
     }
