@@ -8,7 +8,6 @@ pub fn calculate_numbers_mult_diff(numbers: Vec<String>) -> Vec<String> {
     let mut result_mul_div_vector: Vec<String> = numbers.clone();
     let mut index: usize = 0;
     
-    //for (index, num) in numbers.iter().enumerate() 
     while index < result_mul_div_vector.len(){
 
         // Multiplikation
@@ -72,7 +71,7 @@ pub fn calculate_numbers_multiplikation(numbers: &Vec<String>) -> String {
 
             let result: f64 = left * right;
             result_mult = result.to_string();  
-            
+            break;
         }
         
     }
@@ -124,4 +123,8 @@ pub fn calculate_numbers_addition(numbers: Vec<String>) -> String {
         }
     }
     return result.to_string()
+}
+
+fn removing_from_vector() {
+
 }

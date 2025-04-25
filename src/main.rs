@@ -7,7 +7,7 @@ mod algebra;
 mod arithmetic;
 
 fn main() {
-    let equation_string: String = "-3 + 6 * 2 - 4 / 2".to_string();
+    let equation_string: String = "3 * 5 / 6 * 2 - 4 / 2+15".to_string();
 
     let splitted_terms: Vec<String> = paths::str_manipulation::strings_refactor(equation_string);
 

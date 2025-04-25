@@ -1,3 +1,6 @@
+
+// Diese Funktion ist für andere sichtbar und macht die
+// Stringmanipulationen verfügbar.
 pub fn strings_refactor(crazy_string: String) -> Vec<String> {
     let result_string: String = remove_whitespaces(crazy_string);
     let terms_replaced: String = terms_replace_operators(result_string);
