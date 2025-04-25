@@ -1,7 +1,6 @@
 #![allow(dead_code)]
 
 use helping_tools::display_terminal::display_terminals;
-use paths::calc_nums::calculate_formula;
 
 mod paths;
 
