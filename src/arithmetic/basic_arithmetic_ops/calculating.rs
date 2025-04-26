@@ -1,5 +1,5 @@
 use core::f64;
-use crate::helping_tools::display_terminal::display_terminals;
+use crate::helping_tools::display_terminal::display_terminals_validate;
 
 // Rechenregel Potenzen
 pub fn calculate_numbers_powers(numbers: Vec<String>) -> Vec<String> {
@@ -104,10 +104,11 @@ fn calculate_mult_diff(numbers: &Vec<String>, counter: usize, which_operator: ch
     let mut result_mult: String = String::new();
     let result: f64;
     let mut operation: String = String::new();
+    let mut left_right: Vec<f64> = Vec::new();
 
     for (i, num) in numbers.iter().enumerate() {
         if num.contains(which_operator) {
-            let left_right: Vec<f64> = left_right_terms(&numbers[i - 1], &numbers[i + 1]);
+            left_right = left_right_terms(&numbers[i - 1], &numbers[i + 1]);
             
             match which_operator {
                 '*' => {
@@ -125,9 +126,8 @@ fn calculate_mult_diff(numbers: &Vec<String>, counter: usize, which_operator: ch
             break;
         }
     }
-
     print!("{}. ", counter);
-    display_terminals(operation, &result_mult);
+    display_terminals_validate(operation, &left_right[0].to_string(), &left_right[1].to_string(), &which_operator.to_string(), &result_mult);
 
     return result_mult 
 }
@@ -137,11 +137,12 @@ fn calculate_powers(numbers: &Vec<String>, counter: usize, which_operator: char)
     let mut result_powers: String = String::new();
     let mut operation: String = String::new();
     let result: f64;
+    let mut left_right: Vec<f64> = Vec::new();
     
     for (i, num) in numbers.iter().enumerate() {
         if num.contains(which_operator) {
 
-            let left_right: Vec<f64> = left_right_terms(&numbers[i - 1], &numbers[i + 1]);
+            left_right = left_right_terms(&numbers[i - 1], &numbers[i + 1]);
             
             match which_operator {
                 '^' => {
@@ -150,14 +151,12 @@ fn calculate_powers(numbers: &Vec<String>, counter: usize, which_operator: char)
                 }
                 _ => return "Invalid Number".to_string()
             }
-
             result_powers = result.to_string();  
             break;
         }
-    
     }
     print!("{}. ", counter);
-    display_terminals(operation, &result_powers);
+    display_terminals_validate(operation, &left_right[0].to_string(), &left_right[1].to_string(), &which_operator.to_string(), &result_powers);
 
     return result_powers
 }
@@ -176,8 +175,6 @@ pub fn calculate_formula(numbers: Vec<String>) {
     println!("Potenzen      : {}", count_powers);
     println!("Multiplikation: {}", count_mult);
     println!("Division      : {}", count_diff);
-
-    
 }
 
 // Kleines Refactoring weil das entfernen und hinzufügen mehrmals
@@ -191,6 +188,8 @@ fn removing_from_vector(numbers_vector: &mut Vec<String>, index: usize, result: 
     numbers_vector.remove(index - 1);
 }
 
+// Umwandlung des linken und rechten Operanden, da es öfters 
+// benutzt wird habe ich sie ausgelagert
 fn left_right_terms(left: &String, right: &String) -> Vec<f64> {
     let left: f64 = left.parse::<f64>().expect("Invalid Number");    
     let right: f64 = right.parse::<f64>().expect("Invalid Number");
