@@ -6,6 +6,7 @@ pub(crate) fn display_terminals(output_string: String, formula: &String) {
 
 pub(crate) fn display_terminals_validate(output_string: String, left: &String, right: &String, operator: &String, result: &String) {
     let width: usize = 33;
+    
 
     println!("{:<width$} : {} {} {} = {}", output_string, left, operator, right, result, width = width);
 }
