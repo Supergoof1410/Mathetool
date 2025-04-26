@@ -7,44 +7,13 @@
     <title>Mathetool</title>
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-65QEG8G0G5"></script>
-        <script>
+    <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-65QEG8G0G5');
-        </script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #007BFF;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        main {
-            padding: 20px;
-        }
-        footer {
-            background-color: #222;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
+    </script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -52,22 +21,20 @@
         <p>Dein kostenloses Mathematik-Tool für die Grundrechenarten</p>
     </header>
 
-    <main style="display: flex; flex-direction: column; align-items: center; font-family: Arial, sans-serif;">
-
+    <main>
         <h2>Über Mathetool</h2>
-        <p style="max-width: 800px; text-align: center;">
+        <p>
             Mathetool ist ein Open-Source-Projekt, das dir hilft, mathematische Berechnungen zu verstehen und zu lernen. 
             Es ist für alle, die Mathematik auf einfache Weise begreifen wollen!
         </p>
-        <p style="max-width: 800px; text-align: center;">
+        <p>
             Besuche das <a href="https://github.com/KieneDev/Mathetool" target="_blank">GitHub-Repository</a> für mehr Informationen und um den Code zu sehen!
         </p>
     
-        <div style="display: flex; justify-content: center; gap: 30px; margin-top: 30px; flex-wrap: wrap;">
-    
-            <!-- Linke Box: Features -->
-            <section style="background-color: #f0f8ff; padding: 20px; border-radius: 10px; width: 300px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                <h3 style="text-align: center;">Features</h3>
+        <div class="boxes">
+
+            <section class="box features">
+                <h3>Features</h3>
                 <ul>
                     <li>Rechenschritte anzeigen</li>
                     <li>Grundrechenarten, Algebra und mehr</li>
@@ -75,9 +42,8 @@
                 </ul>
             </section>
     
-            <!-- Rechte Box: Updates -->
-            <section style="background-color: #f0fff0; padding: 20px; border-radius: 10px; width: 300px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                <h3 style="text-align: center;">Updates</h3>
+            <section class="box updates">
+                <h3>Updates</h3>
                 <ul>
                     <li><strong>Changes:</strong>
                         <ul>
@@ -93,9 +59,8 @@
                     </li>
                 </ul>
             </section>
-    
+
         </div>
-    
     </main>
 
     <footer>
