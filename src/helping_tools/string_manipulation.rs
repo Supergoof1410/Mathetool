@@ -27,9 +27,9 @@ fn terms_replace_operators(splitted_equation: String) -> String {
             match terms {
                 '+' => terms_replaced.push_str( " +"),
                 '-' => terms_replaced.push_str(" -"),
-                '*' => terms_replaced.push_str(" *"),
-                '/' => terms_replaced.push_str(" /"),
-                '^' => terms_replaced.push_str(" ^"),
+                '*' => terms_replaced.push_str(" * "),
+                '/' => terms_replaced.push_str(" / "),
+                '^' => terms_replaced.push_str(" ^ "),
                 _ => terms_replaced.push(terms),
         }
     }

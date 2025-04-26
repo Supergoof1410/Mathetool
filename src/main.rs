@@ -9,7 +9,7 @@ mod algebra;
 mod arithmetic;
 
 fn main() {
-    let equation_string: String = "3^2*/5   4+5-5-8*2^2*10-1000".to_string();
+    let equation_string: String = "-3^5*6/54+5-5-8*2^2*10-1000".to_string();
     println!();
     display_terminals("Original Formel".to_string(), &equation_string);
 

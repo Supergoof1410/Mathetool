@@ -107,26 +107,15 @@ fn calculate_mult_diff(numbers: &Vec<String>, counter: usize, which_operator: ch
 
     for (i, num) in numbers.iter().enumerate() {
         if num.contains(which_operator) {
-            let left = match numbers[i - 1].parse::<f64>() {
-                Ok(num) => num,
-                Err(_) => {
-                    return "Invalid Number".to_string()
-                }     
-            };  
-            let right = match num.replace(which_operator, "").parse::<f64>() {
-                Ok(num) => num,
-                Err(_) => {
-                    return "Invalid Number".to_string()
-                }
-            }; 
-
+            let left_right: Vec<f64> = left_right_terms(&numbers[i - 1], &numbers[i + 1]);
+            
             match which_operator {
                 '*' => {
-                    result = left * right;
+                    result = left_right[0] * left_right[1];
                     operation = "Multiplikation".to_string();
                 }
                 '/' => {
-                    result = left / right;
+                    result = left_right[0] / left_right[1];
                     operation = "Division".to_string();
                 }
                 _ => return "Invalid Number".to_string()
@@ -151,22 +140,12 @@ fn calculate_powers(numbers: &Vec<String>, counter: usize, which_operator: char)
     
     for (i, num) in numbers.iter().enumerate() {
         if num.contains(which_operator) {
-            let left = match numbers[i - 1].parse::<f64>() {
-                Ok(num) => num,
-                Err(_) => {
-                    return "Invalid Number".to_string()
-                }     
-            };  
-            let right = match num.replace(which_operator, "").parse::<f64>() {
-                Ok(num) => num,
-                Err(_) => {
-                    return "Invalid Number".to_string()
-                }
-            }; 
 
+            let left_right: Vec<f64> = left_right_terms(&numbers[i - 1], &numbers[i + 1]);
+            
             match which_operator {
                 '^' => {
-                    result = f64::powf(left, right);
+                    result = f64::powf(left_right[0], left_right[1]);
                     operation = "Potenz".to_string();
                 }
                 _ => return "Invalid Number".to_string()
@@ -203,12 +182,18 @@ pub fn calculate_formula(numbers: Vec<String>) {
 
 // Kleines Refactoring weil das entfernen und hinzufügen mehrmals
 // vorkommt, habe ich sie ausgelagert.
-fn removing_from_vector(numbers_vector: &mut Vec<String>, index: usize, result_mult: String) {
-    
-    // Das aktuelle Element wird entfernt
-    numbers_vector.remove(index);
-    // Das vorherige Element wird entfernt
+fn removing_from_vector(numbers_vector: &mut Vec<String>, index: usize, result: String) {
+    // Das aktuelle Element wird ersetzt
+    numbers_vector[index] = result;
+    // Das Element danach wird entfernt
+    numbers_vector.remove(index + 1);
+    // Das Element danvor wird entfernt
     numbers_vector.remove(index - 1);
-    // Und durch ein neues ersetzt
-    numbers_vector.insert(index - 1, result_mult);
+}
+
+fn left_right_terms(left: &String, right: &String) -> Vec<f64> {
+    let left: f64 = left.parse::<f64>().expect("Invalid Number");    
+    let right: f64 = right.parse::<f64>().expect("Invalid Number");
+
+    return vec![left, right]
 }
