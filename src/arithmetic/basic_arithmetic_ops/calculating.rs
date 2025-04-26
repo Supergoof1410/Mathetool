@@ -108,7 +108,7 @@ fn calculate_mult_diff(numbers: &Vec<String>, counter: usize, which_operator: ch
 
     for (i, num) in numbers.iter().enumerate() {
         if num.contains(which_operator) {
-            left_right = left_right_terms(&numbers[i - 1], &numbers[i + 1]);
+            left_right = left_right_terms(&numbers[i - 1], &numbers[i + 1]).to_vec();
             
             match which_operator {
                 '*' => {
@@ -142,7 +142,7 @@ fn calculate_powers(numbers: &Vec<String>, counter: usize, which_operator: char)
     for (i, num) in numbers.iter().enumerate() {
         if num.contains(which_operator) {
 
-            left_right = left_right_terms(&numbers[i - 1], &numbers[i + 1]);
+            left_right = left_right_terms(&numbers[i - 1], &numbers[i + 1]).to_vec();
             
             match which_operator {
                 '^' => {
@@ -190,9 +190,9 @@ fn removing_from_vector(numbers_vector: &mut Vec<String>, index: usize, result: 
 
 // Umwandlung des linken und rechten Operanden, da es öfters 
 // benutzt wird habe ich sie ausgelagert
-fn left_right_terms(left: &String, right: &String) -> Vec<f64> {
-    let left: f64 = left.parse::<f64>().expect("Invalid Number");    
-    let right: f64 = right.parse::<f64>().expect("Invalid Number");
-
-    return vec![left, right]
+fn left_right_terms(left: &str, right: &str) ->[f64;2] {
+    [
+        left.parse::<f64>().expect("Invalid Number"),    
+        right.parse::<f64>().expect("Invalid Number")
+    ]
 }
