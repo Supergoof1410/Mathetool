@@ -156,10 +156,3 @@ footer {
     vertical-align: middle;  /* Optional: Verhindert, dass das Bild verspringt */
     margin-right: 10px;       /* Optional: Abstand zwischen Bild und Text */
 }
-
-/* .github {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-} */
