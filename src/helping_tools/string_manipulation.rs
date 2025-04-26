@@ -1,3 +1,4 @@
+use super::display_terminal::display_terminals;
 
 // Diese Funktion ist für andere sichtbar und macht die
 // Stringmanipulationen verfügbar.
@@ -11,7 +12,9 @@ pub fn strings_refactor(crazy_string: String) -> Vec<String> {
 // Damit sind auch Strings in der Form " 3  +  5  * 3" möglich
 fn remove_whitespaces(with_whitespaces: String) -> String {
     let result_string: String = with_whitespaces.chars().filter(|c| !c.is_whitespace()).collect();
-    println!("Leerzeichen entfernt: {}\n", result_string);
+
+    display_terminals("Leerzeichen entfernt".to_string(), &result_string);
+    
     result_string
 }
 
@@ -24,12 +27,13 @@ fn terms_replace_operators(splitted_equation: String) -> String {
             match terms {
                 '+' => terms_replaced.push_str( " +"),
                 '-' => terms_replaced.push_str(" -"),
-                '*' => terms_replaced.push_str(" *"),
-                '/' => terms_replaced.push_str(" /"),
+                '*' => terms_replaced.push_str(" * "),
+                '/' => terms_replaced.push_str(" / "),
+                '^' => terms_replaced.push_str(" ^ "),
                 _ => terms_replaced.push(terms),
         }
     }
-    println!("Leerzeichen vor den Operatoren: {}\n", terms_replaced);
+    display_terminals("Leerzeichen vor den Operatoren".to_string(), &terms_replaced);
     terms_replaced
 }
 
@@ -40,6 +44,6 @@ fn split_terms(splitting_terms: String) -> Vec<String> {
     if splitted_terms[0] == "" {
         splitted_terms.remove(0);
     }
-    println!("Terme einzeln aufgeteilt {:?}", splitted_terms);
+    display_terminals("Terme einzeln aufgeteilt".to_string(), &splitted_terms.join(" "));
     splitted_terms
 }
